@@ -87,3 +87,22 @@ export function useTilt(max = 8) {
   };
   return { onMouseMove: onMove, onMouseLeave: onLeave };
 }
+
+/** Magnetic pull handlers: element drifts toward the cursor. */
+export function useMagnetic(strength = 0.35, max = 14) {
+  const onMove = (e: React.MouseEvent<HTMLElement>) => {
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    const dx = e.clientX - (r.left + r.width / 2);
+    const dy = e.clientY - (r.top + r.height / 2);
+    const clamp = (v: number) => Math.max(-max, Math.min(max, v * strength));
+    el.style.setProperty("--tx", `${clamp(dx)}px`);
+    el.style.setProperty("--ty", `${clamp(dy)}px`);
+  };
+  const onLeave = (e: React.MouseEvent<HTMLElement>) => {
+    const el = e.currentTarget;
+    el.style.setProperty("--tx", "0px");
+    el.style.setProperty("--ty", "0px");
+  };
+  return { onMouseMove: onMove, onMouseLeave: onLeave };
+}

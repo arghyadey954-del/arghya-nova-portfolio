@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useMagnetic } from "@/hooks/use-scroll-fx";
 import { cn } from "@/lib/utils";
 
 export function Reveal({
@@ -41,7 +42,7 @@ export function SectionHeading({
       </Reveal>
       <Reveal delay={80}>
         <h2 className="mt-5 text-3xl leading-[1.08] font-semibold text-balance sm:text-4xl md:text-5xl">
-          <span className="text-gradient">{title}</span>
+          <span className="text-gradient-flow">{title}</span>
         </h2>
       </Reveal>
       {subtitle ? (
@@ -88,14 +89,16 @@ export function GlowButton({
   variant?: "primary" | "ghost";
   className?: string;
 }) {
+  const magnetic = useMagnetic(0.3, 12);
   return (
     <a
       href={href}
+      {...magnetic}
       className={cn(
-        "shine group relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-500 active:scale-[0.97]",
+        "shine magnetic group relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium active:scale-[0.97]",
         variant === "primary"
-          ? "glow-ring bg-primary text-primary-foreground hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_var(--glow),0_24px_70px_-18px_var(--glow)]"
-          : "glass text-foreground hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary",
+          ? "glow-ring bg-primary text-primary-foreground hover:shadow-[0_0_0_1px_var(--glow),0_24px_70px_-18px_var(--glow)]"
+          : "glass gradient-frame text-foreground hover:border-primary/40 hover:text-primary",
         className,
       )}
     >
