@@ -132,8 +132,12 @@ export function Skills() {
                   </div>
                   <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/8">
                     <span
-                      className="block h-full origin-left rounded-full bg-[var(--gradient-text)] transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-[.is-visible]:scale-x-100"
-                      style={{ width: `${s.level}%` }}
+                      className="block h-full rounded-full"
+                      style={{
+                        width: `${s.level}%`,
+                        backgroundImage: "var(--gradient-text)",
+                        boxShadow: "0 0 12px var(--glow)",
+                      }}
                     />
                   </div>
                 </li>
