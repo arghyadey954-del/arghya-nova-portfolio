@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useMagnetic } from "@/hooks/use-scroll-fx";
 import { cn } from "@/lib/utils";
 
 export function Reveal({
