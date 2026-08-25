@@ -42,7 +42,7 @@ export function SectionHeading({
       </Reveal>
       <Reveal delay={80}>
         <h2 className="mt-5 text-3xl leading-[1.08] font-semibold text-balance sm:text-4xl md:text-5xl">
-          <span className="text-gradient">{title}</span>
+          <span className="text-gradient-flow">{title}</span>
         </h2>
       </Reveal>
       {subtitle ? (
