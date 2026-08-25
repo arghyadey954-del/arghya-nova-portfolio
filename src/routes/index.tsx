@@ -1,24 +1,49 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/portfolio/Nav";
+import { Hero } from "@/components/portfolio/Hero";
+import {
+  About,
+  Achievements,
+  Contact,
+  Education,
+  Footer,
+  Projects,
+  Skills,
+} from "@/components/portfolio/Sections";
+import { useRevealOnScroll } from "@/hooks/use-scroll-fx";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "Arghya Kamal Dey — CSE (Data Science) Student & Developer";
+const DESC =
+  "Portfolio of Arghya Kamal Dey, Computer Science & Engineering (Data Science) student at Kazi Nazrul University, batch 2024–2028. Machine learning, analytics and full-stack projects.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESC },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESC },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  useRevealOnScroll();
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="relative min-h-screen overflow-x-hidden bg-background">
+      <Nav />
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Education />
+      <Achievements />
+      <Contact />
+      <Footer />
+    </main>
   );
 }
