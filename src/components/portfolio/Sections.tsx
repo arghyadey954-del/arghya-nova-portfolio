@@ -124,19 +124,22 @@ export function Skills() {
             <div className="pointer-events-none absolute inset-x-0 -top-20 h-40 bg-primary/10 opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-100" />
             <h3 className="font-display text-lg font-semibold">{group.title}</h3>
             <ul className="mt-6 space-y-5">
-              {group.items.map((s) => (
+              {group.items.map((s, si) => (
                 <li key={s.name}>
                   <div className="flex items-baseline justify-between">
-                    <span className="text-sm text-foreground/90">{s.name}</span>
+                    <span className="text-sm text-foreground/90 transition-colors duration-300 group-hover:text-foreground">
+                      {s.name}
+                    </span>
                     <span className="font-mono text-[11px] text-muted-foreground">{s.level}%</span>
                   </div>
                   <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/8">
                     <span
-                      className="block h-full rounded-full"
+                      className="skill-bar block h-full rounded-full"
                       style={{
                         width: `${s.level}%`,
                         backgroundImage: "var(--gradient-text)",
                         boxShadow: "0 0 12px var(--glow)",
+                        ["--bar-delay" as string]: `${si * 110}ms`,
                       }}
                     />
                   </div>
