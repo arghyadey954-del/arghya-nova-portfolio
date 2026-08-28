@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Background } from "@/components/portfolio/Background";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import {
@@ -34,7 +35,8 @@ function Index() {
   useRevealOnScroll();
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-background">
+    <main className="relative min-h-screen overflow-x-hidden bg-transparent">
+      <Background />
       <Nav />
       <Hero />
       <About />
