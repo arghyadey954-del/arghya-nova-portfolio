@@ -35,7 +35,8 @@ function Index() {
   useRevealOnScroll();
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-background">
+    <main className="relative min-h-screen overflow-x-hidden bg-transparent">
+      <Background />
       <Nav />
       <Hero />
       <About />
