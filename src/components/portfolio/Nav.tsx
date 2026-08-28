@@ -75,9 +75,10 @@ export function Nav() {
           <div className="flex items-center gap-2">
             <a
               href={`mailto:${PROFILE.email}`}
-              className="hidden rounded-full bg-primary px-4 py-2 text-[13px] font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-12px_var(--glow)] sm:inline-flex"
+              className="btn-ember group relative hidden overflow-hidden rounded-full px-5 py-2 font-display text-[13px] font-semibold sm:inline-flex"
             >
-              Hire Me
+              <span className="relative z-10">Hire Me</span>
+              <span className="pointer-events-none absolute inset-0 z-10 -translate-x-full skew-x-[-18deg] bg-[linear-gradient(90deg,transparent,oklch(1_0_0/40%),transparent)] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-full" />
             </a>
             <button
               aria-label="Toggle menu"
