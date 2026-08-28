@@ -89,20 +89,21 @@ export function GlowButton({
   variant?: "primary" | "ghost";
   className?: string;
 }) {
-  const magnetic = useMagnetic(0.3, 12);
+  const magnetic = useMagnetic(0.32, 14);
   return (
     <a
       href={href}
       {...magnetic}
       className={cn(
-        "shine magnetic group relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium active:scale-[0.97]",
-        variant === "primary"
-          ? "glow-ring bg-primary text-primary-foreground hover:shadow-[0_0_0_1px_var(--glow),0_24px_70px_-18px_var(--glow)]"
-          : "glass gradient-frame text-foreground hover:border-primary/40 hover:text-primary",
+        "magnetic group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-3.5 font-display text-sm font-semibold tracking-tight",
+        variant === "primary" ? "btn-ember btn-halo" : "btn-ghost-ember glass",
         className,
       )}
     >
-      <span className="relative z-10 flex items-center gap-2">{children}</span>
+      <span className="relative z-10 flex items-center gap-2 transition-transform duration-500 group-hover:-translate-y-[1px]">
+        {children}
+      </span>
+      <span className="pointer-events-none absolute inset-0 z-10 -translate-x-full skew-x-[-18deg] bg-[linear-gradient(90deg,transparent,oklch(1_0_0/35%),transparent)] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-full" />
     </a>
   );
 }
