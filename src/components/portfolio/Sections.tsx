@@ -327,7 +327,11 @@ export function Education() {
         title="The academic timeline"
         subtitle="Foundations in science and mathematics, now sharpened into computer science and data."
       />
-      <ol className="relative ml-3 space-y-6 border-l border-white/10 pl-7 sm:ml-5 sm:pl-10">
+      <ol className="relative ml-3 space-y-6 pl-7 sm:ml-5 sm:pl-10">
+        <span
+          aria-hidden
+          className="timeline-spine pointer-events-none absolute inset-y-0 left-0 w-px"
+        />
         {EDUCATION.map((e, i) => (
           <Reveal as="li" key={e.title} delay={i * 110} className="relative">
             <span
