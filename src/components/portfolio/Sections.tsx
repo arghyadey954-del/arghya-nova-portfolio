@@ -162,7 +162,7 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
       <article
         {...tilt}
         className={cn(
-          "tilt-card glass group relative h-full overflow-hidden rounded-3xl p-6 hover:shadow-[0_30px_90px_-45px_var(--glow)]",
+          "tilt-card gradient-frame sheen glass group relative h-full overflow-hidden rounded-3xl p-6 hover:shadow-[0_30px_90px_-45px_var(--glow)]",
           p.accent === "violet" && "hover:shadow-[0_30px_90px_-45px_var(--neon)]",
         )}
       >
