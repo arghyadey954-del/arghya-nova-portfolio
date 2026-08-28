@@ -119,17 +119,17 @@
   }
 
   ::selection {
-    background: oklch(0.78 0.16 190 / 35%);
+    background: oklch(0.68 0.18 42 / 35%);
   }
 
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: oklch(0.16 0.028 265);
+    background: oklch(0.16 0.004 60);
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(oklch(0.6 0.14 195), oklch(0.55 0.17 300));
+    background: linear-gradient(oklch(0.62 0.17 40), oklch(0.78 0.14 72));
     border-radius: 99px;
   }
 }
@@ -358,10 +358,10 @@
     padding: 1px;
     background: linear-gradient(
       120deg,
-      oklch(0.78 0.16 190 / 65%),
-      oklch(0.7 0.19 300 / 55%),
+      oklch(0.68 0.18 42 / 65%),
+      oklch(0.82 0.15 72 / 55%),
       transparent 45%,
-      oklch(0.78 0.16 190 / 45%)
+      oklch(0.68 0.18 42 / 45%)
     );
     background-size: 220% 220%;
     -webkit-mask:
@@ -398,8 +398,8 @@
   background-image: linear-gradient(
     180deg,
     transparent,
-    oklch(0.78 0.16 190 / 70%),
-    oklch(0.7 0.19 300 / 70%),
+    oklch(0.68 0.18 42 / 70%),
+    oklch(0.82 0.15 72 / 70%),
     transparent
   );
   background-size: 100% 200%;
