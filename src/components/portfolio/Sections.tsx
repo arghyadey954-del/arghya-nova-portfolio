@@ -222,17 +222,95 @@ function ProjectCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
   );
 }
 
+function FeaturedCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
+  const tilt = useTilt(5);
+  return (
+    <Reveal delay={i * 120}>
+      <article
+        {...tilt}
+        className="tilt-card gradient-frame sheen glass group relative h-full overflow-hidden rounded-[2rem] p-7 sm:p-9"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+          style={{
+            background:
+              "radial-gradient(520px circle at var(--mx,50%) var(--my,50%), oklch(1 0 0 / 10%), transparent 70%)",
+          }}
+        />
+        <div
+          className={cn(
+            "pointer-events-none absolute -top-24 -right-16 size-64 rounded-full blur-3xl transition-opacity duration-700 group-hover:opacity-100",
+            p.accent === "cyan" ? "bg-primary/15" : "bg-accent/15",
+            "opacity-50",
+          )}
+        />
+        <div className="relative flex items-center gap-3">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-[10px] tracking-[0.2em] text-primary uppercase">
+            <Sparkles className="size-3" /> Featured
+          </span>
+          <span className="font-mono text-[11px] text-muted-foreground">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <ArrowUpRight className="ml-auto size-5 text-muted-foreground transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" />
+        </div>
+
+        <h3 className="relative mt-6 font-display text-2xl font-semibold sm:text-3xl">
+          <span className="text-gradient-flow">{p.title}</span>
+        </h3>
+        <p className="relative mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
+          {p.blurb}
+        </p>
+
+        <ul className="relative mt-6 flex flex-wrap gap-2">
+          {p.tags.map((t) => (
+            <li
+              key={t}
+              className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-[11px] text-foreground/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+            >
+              {t}
+            </li>
+          ))}
+        </ul>
+
+        <div className="relative mt-8 flex flex-wrap gap-2">
+          <GlowButton href={p.demo} className="px-5 py-2.5 text-xs">
+            <ExternalLink className="size-3.5" /> Live Demo
+          </GlowButton>
+          <GlowButton href={p.code} variant="ghost" className="px-5 py-2.5 text-xs">
+            <Github className="size-3.5" /> Code
+          </GlowButton>
+        </div>
+      </article>
+    </Reveal>
+  );
+}
+
 export function Projects() {
+  const featured = PROJECTS.slice(0, 2);
+  const rest = PROJECTS.slice(2);
   return (
     <Section id="projects">
       <SectionHeading
-        eyebrow="Projects"
+        eyebrow="Featured Projects"
         title="Things I've designed, trained and shipped"
         subtitle="Selected work spanning machine learning, analytics dashboards and full-stack utilities."
       />
+      <div className="grid gap-5 lg:grid-cols-2">
+        {featured.map((p, i) => (
+          <FeaturedCard key={p.title} p={p} i={i} />
+        ))}
+      </div>
+
+      <Reveal className="mt-14 mb-8 flex items-center gap-4">
+        <span className="font-mono text-[11px] tracking-[0.22em] text-muted-foreground uppercase">
+          More Work
+        </span>
+        <span className="hairline flex-1" />
+      </Reveal>
+
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {PROJECTS.map((p, i) => (
-          <ProjectCard key={p.title} p={p} i={i} />
+        {rest.map((p, i) => (
+          <ProjectCard key={p.title} p={p} i={i + featured.length} />
         ))}
       </div>
     </Section>
